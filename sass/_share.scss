@@ -1,0 +1,83 @@
+.share{
+    grid-row: 3 / span 1;
+    grid-column: 3 / -1;
+
+    @media only screen and (max-width: $bp-medium){
+        grid-row: 4 / span 1;
+        grid-column: 1 / -1;
+    }
+
+    @media only screen and (max-width: $bp-small){
+        grid-row: 5 / span 1;
+    }
+
+    background-image: linear-gradient(to bottom left, var(--color-primary-dark-2), var(--color-primary-dark));
+    padding: 2rem;
+
+    &__form{
+        display: flex;
+        flex-direction: column;
+
+        padding: 1.5rem 2rem;
+    }
+
+    &__field{
+        position: relative;
+    }
+
+    &__label{
+        position: absolute;
+        top: 1rem;
+        font-size: 2rem;
+        left: 0;
+        color: var(--color-primary-light);
+        pointer-events: none;
+        transition: 0.5s;
+    }
+
+    &__icon{
+        height: 2rem;
+        width: 2rem;
+        fill: var(--color-primary-light);
+
+        &:not(:last-child){
+            margin-right: 0.5rem;
+        }
+    }
+
+    &__social{
+        padding: 1rem 2rem;
+    }
+}
+
+.input__field--e-mail,
+.input__field--text{
+    padding: 1rem 0;
+    margin-bottom: 2.5rem;
+    font-size: 2rem;
+    width: 100%;
+    box-shadow: none;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    display: block;
+    border-bottom: 0.15rem solid var(--color-primary-light);
+
+    @media only screen and (max-width: $bp-medium){
+        width: 50%;
+    }
+
+    &:focus ~ .share__label,
+    &:valid ~ .share__label{
+        top: -1.2rem;
+        left: 0;
+        color: var(--color-white);
+        font-size: 2rem;
+        font-weight: 300;
+    }
+
+    &:focus,
+    &:valid{
+        border-bottom: 0.2rem solid var(--color-white);
+    }
+}   

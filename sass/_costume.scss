@@ -1,0 +1,104 @@
+.costume{
+    background-color: var(--color-primary);
+
+    grid-row: 2 / 4;
+    grid-column: 1 / span 1;
+
+    display: flex;
+    align-items: center;
+
+    @media only screen and (max-width: $bp-medium){
+        grid-row: 2 / span 1;
+        grid-column: 1 / -1;
+    }
+    
+    &__list{
+        list-style: none;
+        width: 100%;
+    }
+
+    &__link{
+
+        &:link,
+        &:visited{
+            text-decoration: none;
+
+            display: flex;
+            align-items: center;
+
+            padding: 1rem 2rem;
+            text-transform: uppercase;
+            font-size: 2rem;
+            font-weight: 100;
+            color: var(--color-white);
+        }
+
+        &:hover,
+        &:active{
+            background-color: var(--color-primary-dark-2);
+        }
+    }
+
+    &__dropIcon{
+        height: 2rem;
+        width: 2rem;
+        fill: var(--color-white);
+    }
+
+    &__personalize, &__random{
+        background-color: var(--color-primary-dark-2);
+        padding: 2rem 3rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    &__thumbnails{
+        margin-top: 2rem;
+
+        display: flex;
+        flex-wrap: wrap;
+        
+        &--1, &--2, &--3, &--4, &--5, &--6, &--7{
+            display: block;
+
+            width: 5rem;
+            height: 5rem;
+            object-fit: cover;
+
+            &:not(:last-child){
+                margin-right: 1rem;
+                margin-bottom: 1rem;
+            } 
+        }
+    }
+}
+
+.input__field--num{
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+    font-family: inherit;
+    background-color: transparent;
+    width: 5rem;
+    display: block;
+    margin: 0 auto;
+    padding: 0.8rem 0;
+    border: none;
+    border-bottom: 0.2rem solid var(--color-white);
+    appearance: textfield;
+    -moz-appearance: textfield;
+    transition: all 0.2s;
+
+    &:focus{
+        outline: none;
+        padding: 1rem 0;
+        font-size: 1.5rem;
+    }
+}
+
+.input__field--browse{
+    font-size: 2rem;
+    font-family: inherit;
+}

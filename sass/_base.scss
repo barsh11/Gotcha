@@ -1,0 +1,211 @@
+:root{
+    --color-primary: #34ace0;
+    --color-primary-dark: #104f6b;
+    --color-primary-dark-2: #1c86b5;
+    --color-primary-light: #7ecaeb;
+
+    --color-secondary: #ed3d57;
+    --color-secondary-dark: #660917;
+    --color-secondary-dark-2: #850c1e;
+    --color-secondary-light: #f7aab5;
+    --color-secondary-light-2: #f37b8d;
+
+    --color-grey-light: #ccd2d7;
+    --color-grey-light-2: #f2f4f5;
+    --color-grey-light-3: #dfe3e6;
+    --color-grey-dark: #5f6c78;
+    --color-grey-dark-2: #778693;
+    --color-white: #fff;
+    --color-black: #000;
+    --color-black-light: #110D0D;
+
+    --color-green: #5ecc00;
+    --color-red: #c7312a;
+    --color-red-light: #d9514b;
+
+    --shadow-dark: 0 2rem 6rem rgba(0,0,0,0.3);
+    --shadow-light: 0 2rem 5rem rgba(0,0,0,0.06);
+}
+
+$bp-largest: 93.75em; //1500px
+$bp-large: 68.75em; //1100px
+$bp-medium: 56.25em; //900px
+$bp-small:  37.5em; //600px
+
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html{
+    box-sizing: border-box;
+
+    font-size: 75%; //1rem==12px / 12px/16px=75%
+
+    @media only screen and (max-width: $bp-largest){
+        font-size: 62.5%; //1rem==10px
+    }
+
+    @media only screen and (max-width: $bp-medium){
+        font-size: 50%; //1rem==8px
+    }
+
+    @media only screen and (max-width: $bp-small){
+        font-size: 37.5%; //1rem==6px
+    }
+}
+
+body{
+     font-family: 'Roboto', sans-serif;
+     color: var(--color-black);
+     font-weight: 300;
+     line-height: 1.6;
+     background-image: linear-gradient(to bottom left, #ed3d57, #660917); //fix this colors
+
+     padding: 8rem;
+
+     @media only screen and (max-width: $bp-large){
+        padding: 0;
+    }
+
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     
+}
+
+.container{
+    box-shadow: var(--shadow-dark);
+
+    display: grid;
+    grid-template-rows: 12rem 2fr 1fr 5rem;
+    grid-template-columns: [costume-start] minmax(20rem, 1.5fr) [costume-end board-start] 4fr [board-end scores-start] minmax(20rem, 1.5fr) [scores-end];
+
+    @media only screen and (max-width: $bp-medium){
+        grid-template-rows: 12rem min-content 3fr min-content 5rem;
+        grid-template-columns: [board-start] 4fr [board-end scores-start] minmax(20rem, 1.5fr) [scores-end];
+
+        width: 100%;
+        height: 100%;
+    }
+
+    @media only screen and (max-width: $bp-small){
+        grid-template-rows: 12rem min-content min-content min-content 1fr 5rem;
+        grid-template-columns: 1fr;
+
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.header{
+    grid-row: 1 / span 1;
+    grid-column: 1 / -1;
+
+    box-shadow: var(--shadow-light);
+    background-image: linear-gradient(to right bottom, var(--color-grey-light), var(--color-grey-light-3)); //fix this colors
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer{
+    grid-row: 4 / span 1;
+    grid-column: 1 / -1;
+
+    @media only screen and (max-width: $bp-medium){
+        grid-row: 5 / span 1;
+    }
+
+    @media only screen and (max-width: $bp-small){
+        grid-row: 6 / -1;
+    }
+
+    background-color: var(--color-black-light);
+    color: var(--color-grey-light);
+    font-size: 1.5rem;
+
+    padding-bottom: 1rem;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.btn-submit{
+    height: 5rem;
+    width: 5rem;
+    border-radius: 100px;
+    border: none;
+    background-color: var(--color-green);
+    box-shadow: var(--shadow-dark);
+    transition: all 0.2s;
+
+    display: block;
+    margin-top: 1.5rem;
+
+    align-self: flex-end;  
+    // ** //
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__icon{
+        height: 3rem;
+        width: 3rem;
+        fill: var(--color-white);
+    } 
+
+    &:hover,
+    &:active{
+        cursor: pointer;
+        box-shadow: var(--shadow-dark);
+        transform: translateY(-0.5rem);
+    }
+ }
+
+ .btn-new,
+ .btn-hold{
+     background-color: transparent;
+     border: none;
+     text-transform: uppercase;
+     font-family: inherit;
+     font-size: 2.5rem;
+     color: var(--color-black-light);
+     transition: all 0.2s;
+     
+     display: block;
+     padding: 0.5rem;
+
+     &:hover,
+     &:active{
+         cursor: pointer;
+         transform: translateY(+0.5rem);
+     }
+ }
+
+.logo{
+    height: 9rem;
+    width: 9rem;
+    fill: var(--color-black-light);
+    padding-right: 1.5rem;
+ }
+
+.h1-heading{
+    color: var(--color-black-light);
+    font-size: 7rem;
+    font-weight: 700;
+}
+
+.h3-heading{
+    text-transform: uppercase;
+    color: var(--color-white);
+    font-size: 2rem;
+    font-weight: 300;
+    padding: 0.8rem 1.6rem;
+    margin-bottom: 0.5rem;
+}
