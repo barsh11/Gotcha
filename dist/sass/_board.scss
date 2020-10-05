@@ -132,4 +132,8 @@
             box-shadow: (--shadow-dark);
         }
     }
+
+    &__matched{
+       visibility: hidden;
+    }
 }

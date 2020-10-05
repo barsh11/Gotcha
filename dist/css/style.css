@@ -63,7 +63,7 @@ body {
   grid-template-columns: [costume-start] minmax(20rem, 1.5fr) [costume-end board-start] 4fr [board-end scores-start] minmax(20rem, 1.5fr) [scores-end]; }
   @media only screen and (max-width: 56.25em) {
     .container {
-      grid-template-rows: 12rem min-content 3fr 0.5fr 5rem;
+      grid-template-rows: 12rem min-content 3fr min-content 5rem;
       grid-template-columns: [board-start] 4fr [board-end scores-start] minmax(20rem, 1.5fr) [scores-end];
       width: 100%;
       height: 100%; } }
@@ -319,6 +319,8 @@ body {
   .card__flipped .card__side--back {
     transform: rotateY(0);
     box-shadow: --shadow-dark; }
+  .card__matched {
+    visibility: hidden; }
 
 .scores {
   grid-row: 2 / span 1;
