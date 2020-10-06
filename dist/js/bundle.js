@@ -3846,7 +3846,43 @@ eval("var g;\n\n// This works in non-strict mode\ng = (function() {\n\treturn th
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\n//# sourceURL=webpack:///./src/js/index.js?");
+eval("\n\nvar _Costumize = __webpack_require__(/*! ./models/Costumize */ \"./src/js/models/Costumize.js\");\n\nvar _Costumize2 = _interopRequireDefault(_Costumize);\n\nvar _costumizeView = __webpack_require__(/*! ./views/costumizeView */ \"./src/js/views/costumizeView.js\");\n\nvar costumizeView = _interopRequireWildcard(_costumizeView);\n\nvar _base = __webpack_require__(/*! ./views/base */ \"./src/js/views/base.js\");\n\nfunction _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step(\"next\", value); }, function (err) { step(\"throw\", err); }); } } return step(\"next\"); }); }; }\n// let flipCount;\n// in the begining of every round, flipCount=0;\n// whenever the user clicks on a card flipCount=flipCount+1;\n// if card flipped is card__gotcha:\n// mix all cards, currScore=0, pass turn to next player, flipCount=0;\n// if card flipped !card__gotach:\n// if flipCount==2:\n// check if there is a match: \n// if there is a match: currScore++, flipCount=0\n// if there is no match: finalScore=finalScore+currScore, pass turn to next player, flipCount=0;\n\nvar state = {};\n\n//** COSTUMIZE CONTROLLER */\nvar controlCostumize = function () {\n    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(choice) {\n        return regeneratorRuntime.wrap(function _callee$(_context) {\n            while (1) {\n                switch (_context.prev = _context.next) {\n                    case 0:\n                        // ****** Costumize cards ******\n                        // 1) when this section is clicked:\n                        if (choice === 'costume') {\n                            // 1.1) rendrer HTML in UI\n                            costumizeView.renderCostume();\n                            // 2) when files are chosen:\n                            // 2.1) generate thumbnails on UI\n                            // 3) when submit btn is clicked:\n                            // 3.1) store images\n                            // 3.2) images will be stored in array\n                        }\n\n                        // ****** Random cards ******\n                        // 1) when this section is clicked:\n                        if (choice === 'random') {}\n                        // 1.1) render HTML on UI\n                        // 2) when submit btn is clicked:\n                        // 2.1) generate and store photos from photos' API\n                        // 2.2) images will be stored in array\n\n                    case 2:\n                    case 'end':\n                        return _context.stop();\n                }\n            }\n        }, _callee, undefined);\n    }));\n\n    return function controlCostumize(_x) {\n        return _ref.apply(this, arguments);\n    };\n}();\n\n_base.elements.costumeCards.addEventListener('click', controlCostumize('costume'));\n_base.elements.randomCards.addEventListener('click', controlCostumize('random'));\n\n//# sourceURL=webpack:///./src/js/index.js?");
+
+/***/ }),
+
+/***/ "./src/js/models/Costumize.js":
+/*!************************************!*\
+  !*** ./src/js/models/Costumize.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nvar Costumize = function Costumize() {\n    _classCallCheck(this, Costumize);\n};\n\nexports.default = Costumize;\n\n//# sourceURL=webpack:///./src/js/models/Costumize.js?");
+
+/***/ }),
+
+/***/ "./src/js/views/base.js":
+/*!******************************!*\
+  !*** ./src/js/views/base.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nvar elements = exports.elements = {\n    costumeCards: document.querySelector('.costume__link--1'),\n    randomCards: document.querySelector('.costume__link--2')\n};\n\n//# sourceURL=webpack:///./src/js/views/base.js?");
+
+/***/ }),
+
+/***/ "./src/js/views/costumizeView.js":
+/*!***************************************!*\
+  !*** ./src/js/views/costumizeView.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.renderCostume = undefined;\n\nvar _base = __webpack_require__(/*! ./base */ \"./src/js/views/base.js\");\n\nvar renderCostume = exports.renderCostume = function renderCostume() {\n    var markup = '\\n    <div class=\"costume__personalize\">\\n        <label for=\"photo\" class=\"h3-heading\">choose photos: </label>\\n        <input type=\"file\" name=\"photo\" accept=\"image/*\" multiple class=\"input__field--browse\">\\n        <div class=\"costume__thumbnails\">\\n        </div>\\n        <btn type=\"submit\" class=\"btn-submit\">\\n            <svg class=\"btn-submit__icon\">\\n                <use xlink:href=\"img/sprite.svg#icon-arrow-right\"></use>\\n            </svg>\\n        </btn>\\n    </div>\\n    ';\n    _base.elements.costumeCards.insertAdjacentHTML('afterend', markup);\n};\n\n//# sourceURL=webpack:///./src/js/views/costumizeView.js?");
 
 /***/ }),
 
