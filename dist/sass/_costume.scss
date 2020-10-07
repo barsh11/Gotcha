@@ -54,6 +54,17 @@
         justify-content: space-around;
     }
 
+    &__wrapper{
+        
+        &--1, &--2, &--3, &--4, &--5, &--6, &--7{
+
+            &:not(:last-child){
+                margin-right: 1rem;
+                margin-bottom: 1rem;
+            }
+        } 
+    }
+
     &__thumbnails{
         margin-top: 2rem;
 
@@ -66,11 +77,6 @@
             width: 5rem;
             height: 5rem;
             object-fit: cover;
-
-            &:not(:last-child){
-                margin-right: 1rem;
-                margin-bottom: 1rem;
-            } 
         }
     }
 }

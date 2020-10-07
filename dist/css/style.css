@@ -193,6 +193,9 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-around; }
+  .costume__wrapper--1:not(:last-child), .costume__wrapper--2:not(:last-child), .costume__wrapper--3:not(:last-child), .costume__wrapper--4:not(:last-child), .costume__wrapper--5:not(:last-child), .costume__wrapper--6:not(:last-child), .costume__wrapper--7:not(:last-child) {
+    margin-right: 1rem;
+    margin-bottom: 1rem; }
   .costume__thumbnails {
     margin-top: 2rem;
     display: flex;
@@ -202,9 +205,6 @@ body {
       width: 5rem;
       height: 5rem;
       object-fit: cover; }
-      .costume__thumbnails--1:not(:last-child), .costume__thumbnails--2:not(:last-child), .costume__thumbnails--3:not(:last-child), .costume__thumbnails--4:not(:last-child), .costume__thumbnails--5:not(:last-child), .costume__thumbnails--6:not(:last-child), .costume__thumbnails--7:not(:last-child) {
-        margin-right: 1rem;
-        margin-bottom: 1rem; }
 
 .input__field--num {
   color: white;
@@ -300,7 +300,7 @@ body {
     background-image: linear-gradient(to right bottom, var(--color-red), var(--color-red-light));
     transform: rotateY(180deg);
     transition: all 0.2s; }
-  .card__picture--1, .card__picture--2, .card__picture--3, .card__picture--4, .card__picture--5, .card__picture--6, .card__picture--7 {
+  .card__picture--1, .card__picture--2, .card__picture--3, .card__picture--4, .card__picture--5, .card__picture--6, .card__picture--0 {
     display: block;
     width: 100%;
     height: 100%;

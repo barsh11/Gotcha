@@ -4,7 +4,7 @@
   "description": "memory game",
   "main": "index.js",
   "scripts": {
-    "watch:sass": "node-sass dist/sass/main.scss dist/css/style.css -w",
+    "watch:sass": "node-sass ./dist/sass/main.scss ./dist/css/style.css -w",
     "devserver": "live-server --browser=firefox",
     "start": "npm-run-all --parallel devserver watch:sass",
     "dev": "webpack --mode development",
