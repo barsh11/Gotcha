@@ -19,9 +19,8 @@ function generateCardsHtml(num){
             i++;
         }
     }
-    console.log(randomNums);
+    
     randomNums.splice(generateRandomNum(num-1), 0, 8);
-    console.log(randomNums);
     
     const board=elements.board;
     for(let i=0; i< randomNums.length; i++){
@@ -29,7 +28,7 @@ function generateCardsHtml(num){
 
         if (randomNums[i]!==8){
             markup=`
-                <div class="card card__flipped" id="card-${randomNums[i]}">
+                <div class="card" id="${i}" data-cardnum="${randomNums[i]}">
                     <div class="card__side card__side--front">
                         <div class="card__picture card__picture--front">
                             &nbsp;
@@ -42,7 +41,7 @@ function generateCardsHtml(num){
             `;
         } else{
             markup=`
-                <div class="card card__gotcha">
+                <div class="card card__gotcha" id="${i}" data-cardNum="gotcha">
                     <div class="card__side card__side--front">
                         <div class="card__picture card__picture--front">
                             &nbsp;
@@ -58,6 +57,8 @@ function generateCardsHtml(num){
         
         board.insertAdjacentHTML('beforeend', markup);
     }
+
+    return randomNums;
 }
 
 export default class Costumize{
@@ -78,11 +79,11 @@ export default class Costumize{
         this.images=imgs;
     }
     generateCostumize(images){
-        console.log(images.length);
-        generateCardsHtml(images.length);
+        const currCards= generateCardsHtml(images.length);
+        return currCards;
     }
     generateRandom(num){
-        console.log(num);
-        generateCardsHtml(num);
+        const currCards= generateCardsHtml(num);
+        return currCards;
     }
 }

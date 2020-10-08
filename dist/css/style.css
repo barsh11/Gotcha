@@ -209,7 +209,7 @@ body {
 .input__field--num {
   color: white;
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-family: inherit;
   background-color: transparent;
   width: 5rem;
@@ -224,7 +224,7 @@ body {
   .input__field--num:focus {
     outline: none;
     padding: 1rem 0;
-    font-size: 1.5rem; }
+    font-size: 2rem; }
 
 .input__field--browse {
   font-size: 2rem;
@@ -271,6 +271,11 @@ body {
   box-shadow: var(--shadow-light);
   height: 100%;
   width: 100%;
+  visibility: visible;
+  opacity: 1;
+  backface-visibility: hidden;
+  transition: visibility 0s, opacity 0.5s, transform 0.5s ease-out;
+  transition-delay: 1s;
   justify-self: center;
   align-self: center;
   display: grid;
@@ -312,7 +317,7 @@ body {
     fill: var(--color-white);
     align-self: center; }
   .card:not(.card__flipped):hover .card__side--front {
-    transform: scale(103%) translateY(-0.5rem);
+    transform: translateY(-0.5rem);
     box-shadow: var(--shadow-light); }
   .card__flipped .card__side--front {
     transform: rotateY(-180deg); }
@@ -320,7 +325,8 @@ body {
     transform: rotateY(0);
     box-shadow: --shadow-dark; }
   .card__matched {
-    visibility: hidden; }
+    visibility: hidden;
+    opacity: 0; }
 
 .scores {
   grid-row: 2 / span 1;

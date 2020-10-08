@@ -1,19 +1,9 @@
-
-// let flipCount;
-// in the begining of every round, flipCount=0;
-// whenever the user clicks on a card flipCount=flipCount+1;
-// if card flipped is card__gotcha:
-// mix all cards, currScore=0, pass turn to next player, flipCount=0;
-// if card flipped !card__gotach:
-// if flipCount==2:
-// check if there is a match: 
-// if there is a match: currScore++, flipCount=0
-// if there is no match: finalScore=finalScore+currScore, pass turn to next player, flipCount=0;
-
 import Costumize from './models/Costumize';
 import * as costumizeView from './views/costumizeView';
-import Game from './models/Game';
-import * as gameView from './views/gameView';
+import Round from './models/Round';
+import * as roundView from './views/roundView';
+import Scores from './models/Scores';
+import * as scoresView from './views/scoresView';
 import {elements} from './views/base';
 
 const state={};
@@ -42,9 +32,9 @@ elements.costumeCards.addEventListener('click', e => {
             console.log(state.costumize.images); //testing
             console.log(state.costumize.files); //testing
             // 4) generate board
-            state.costumize.generateCostumize(state.costumize.images);
+            const currCards= state.costumize.generateCostumize(state.costumize.images);
             // start game
-            controlGame();
+            controlGame(0, currCards);
         });
         }
     }, false);
@@ -67,17 +57,99 @@ elements.randomCards.addEventListener('click', e =>{
             // 3.2) auto close the menu on costumize bar.
             costumizeView.dropContent(elements.randomCards, 2);
             // 4) generate board
-            state.costumize.generateRandom(num);
+            const currCards= state.costumize.generateRandom(num);
             // start game
-            controlGame();
+            controlGame(0, currCards);
         } else{
             alert('You can choose up to 7 photos. Please choose again.');
         }
     });
 });
 
-/** GAME CONTROLLER */
-const controlGame= () => {
+let win=false;
 
+/** GAME CONTROLLER */
+const controlGame= (currPlayer, currCards) => {
+    
+    if(!win){
+        let player, updatedCards;
+
+        // start a new round
+        state.round=new Round(currPlayer, false, currCards, -1, -1, false, 0);
+
+        // select all cards
+        const cards=document.querySelectorAll('.card');
+
+        // if cards matchs
+        const removeListener= () => {
+            // remove event listeners
+            state.round.firstCard.removeEventListener('click', clickHandler, true);
+            state.round.secondCard.removeEventListener('click', clickHandler, true);
+        }
+
+        // click handler
+        const clickHandler= (e) => {
+            // choosing closest card to click 
+            let card= e.target.closest('.card');
+            console.log(`controlGame: the card that was clicked on is:`);
+            console.log(card.dataset.cardnum);
+            // if the flipping back of the cards that didn't match
+            // is not finished:
+            if (state.round.lockBoard===true){
+                console.log('board is lock. please click again.');
+                return;
+            }
+            // if user clicks twice on the same card:
+            if (card.id===state.round.firstCard.id){ 
+                console.log('you chose the same card twice. please click again.');
+                return;
+            }
+            // in case that is the second click, check if there is a match
+            let match= state.round.flipCards(card);
+            // flip card in UI
+            roundView.flipCardsUI(card);
+            if (match===true){
+                // update current score
+                state.round.currScore++;
+                // update current score in UI
+                scoresView.renderCurrScore(state.round);
+                // remove cards from currCards property
+                state.round.removeCards();
+                // remove event listeners
+                removeListener();
+                // remove cards from UI
+                roundView.matchCardsUI(state.round); 
+                // initiate rounds' cards
+                state.round.firstCard=-1;
+                state.round.secondCard=-1;
+            } else if (match===false && state.round.secondCard!=-1){
+                state.round.lockBoard= true;
+                setTimeout( () => {
+                    // flip card back in UI
+                    roundView.flipCardsUI(state.round.firstCard);
+                    roundView.flipCardsUI(state.round.secondCard);
+                    state.round.lockBoard= false;
+                    // next player
+                    state.round.currPlayer===0 ? player=1 : player=0;
+                    // next player in UI
+                    scoresView.renderActivePlayer();
+                    updatedCards=state.round.currCards;
+                    console.log(`controlGame: the updated cards are: ${updatedCards}`);
+                    console.log(`controlGame: turn is passed from: ${state.round.currPlayer} to ${player}`);
+                    state.round.firstCard=-1;
+                    state.round.secondCard=-1;
+                }, 1200);
+            }
+            // to start new round AFTER cards are flipped back
+            if (state.round.firstCard===-1 && state.round.secondCard===-1){
+                controlGame(player, updatedCards);
+            }
+        }
+            
+        // attach event listener to every card
+        cards.forEach(curr => {
+            curr.addEventListener('click', clickHandler, true);
+        });
+    }
 }
 
