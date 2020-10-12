@@ -20,7 +20,8 @@
   --color-red: #c7312a;
   --color-red-light: #d9514b;
   --shadow-dark: 0 2rem 6rem rgba(0,0,0,0.3);
-  --shadow-light: 0 2rem 5rem rgba(0,0,0,0.06); }
+  --shadow-light: 0 2rem 5rem rgba(0,0,0,0.06);
+  --h2-width: 22rem; }
 
 *,
 *::before,
@@ -37,10 +38,10 @@ html {
       font-size: 62.5%; } }
   @media only screen and (max-width: 56.25em) {
     html {
-      font-size: 50%; } }
+      font-size: 37.5%; } }
   @media only screen and (max-width: 37.5em) {
     html {
-      font-size: 37.5%; } }
+      font-size: 25%; } }
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -69,7 +70,7 @@ body {
       height: 100%; } }
   @media only screen and (max-width: 37.5em) {
     .container {
-      grid-template-rows: 12rem min-content min-content min-content 1fr 5rem;
+      grid-template-rows: 12rem min-content min-content 2fr 1fr 5rem;
       grid-template-columns: 1fr;
       width: 100%;
       height: 100%; } }
@@ -98,7 +99,7 @@ body {
       grid-row: 5 / span 1; } }
   @media only screen and (max-width: 37.5em) {
     .footer {
-      grid-row: 6 / -1; } }
+      grid-row: 6 / span 1; } }
 
 .btn-submit {
   height: 5rem;
@@ -156,19 +157,21 @@ body {
 .h2-heading {
   position: absolute;
   top: -6rem;
-  left: -0.5rem;
+  right: calc(50% - var(--h2-width)/2);
+  animation-name: fadeUp;
+  animation-duration: 0.2s;
   white-space: nowrap;
-  animation: fadeIn ease 0.4s;
   text-transform: uppercase;
   color: var(--color-white);
   font-size: 3rem;
-  font-weight: 700;
-  display: block; }
+  font-weight: 700; }
 
-@keyframes fadeIn {
-  from {
+@keyframes fadeUp {
+  0% {
+    top: 0;
     opacity: 0; }
-  to {
+  100% {
+    top: -6rem;
     opacity: 1; } }
 
 .h3-heading {
@@ -255,6 +258,8 @@ body {
   grid-row: 2 / span 2;
   grid-column: 2 / span 1;
   background-image: linear-gradient(to bottom right, var(--color-primary-dark-2), var(--color-primary-dark));
+  backface-visibility: hidden;
+  transition: all 0.3s;
   display: grid;
   grid-template-rows: repeat(4, [card-col-start] 15vw [card-col-end]);
   grid-template-columns: repeat(auto-fit, [card-col-start] 10vw [card-col-end]);
@@ -295,7 +300,7 @@ body {
   opacity: 1;
   backface-visibility: hidden;
   transition: visibility 0s, opacity 0.5s, transform 0.2s ease-out;
-  transition-delay: 1s;
+  transition-delay: 0.8s;
   justify-self: center;
   align-self: center;
   display: grid;
@@ -348,7 +353,7 @@ body {
     visibility: hidden;
     opacity: 0; }
   .card__winner {
-    transform: translateY(50%);
+    transform: translateY(10rem);
     position: relative;
     height: 100%;
     width: 100%; }
@@ -400,7 +405,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center; }
+    align-items: center;
+    padding: 2rem; }
     @media only screen and (max-width: 37.5em) {
       .scores__player {
         padding: 1.5rem; } }
@@ -430,7 +436,7 @@ body {
       background-color: var(--color-red-light);
       font-weight: 100;
       padding: 1rem;
-      margin-top: 1rem;
+      margin: 1rem 0;
       display: flex;
       flex-direction: column;
       align-items: center; }

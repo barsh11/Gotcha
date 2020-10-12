@@ -19,5 +19,5 @@ export const renderWinner= (gotchaCard, winner) => {
     let heading= document.createElement('h2');
     heading.textContent=`player ${winner} won!`;
     heading.classList.add('h2-heading');
-    setTimeout(() => {gotchaCard.appendChild(heading);}, 1000);
+    setTimeout(() => {gotchaCard.insertAdjacentElement('afterbegin', heading);}, 1000);
 }
