@@ -21,14 +21,14 @@
         </header>
         <section class="costume">
             <ul class="costume__list">
-                <li class="costume__item closed">
+                <li class="costume__item">
                     <a href="#" class="costume__link costume__link--1">
                         <span>costumize your cards</span>
                         <svg class="costume__dropIcon">
                             <use xlink:href="img/sprite.svg#icon-chevron-small-down"></use>
                         </svg>
                     </a>
-                    <!--<div class="costume__personalize">
+                    <!--div class="costume__personalize">
                         <label for="photo" class="h3-heading">choose photos: </label>
                         <input type="file" name="photo" accept="image/*" multiple class="input__field--browse">
                         <div class="costume__thumbnails">
@@ -56,7 +56,7 @@
                     </a>
                     <!--<div class="costume__random">
                         <label for="numPhotos" class="h3-heading">choose number of photos: </label>
-                        <input type="number" name="numPhotos" class="input__field--num" value="7">
+                        <input type="number" name="numPhotos" class="input__field--num" value="7" max="7">
                         <btn type="submit" class="btn-submit">
                             <svg class="btn-submit__icon">
                                 <use xlink:href="img/sprite.svg#icon-arrow-right"></use>
@@ -67,7 +67,7 @@
             </ul>
         </section>
         <section class="board">
-            <div class="card">
+            <!--<div class="card">
                 <div class="card__side card__side--front">
                     <div class="card__picture card__picture--front">
                         &nbsp;
@@ -218,7 +218,7 @@
                         <use xlink:href="img/sprite.svg#icon-refresh"></use>
                     </svg> 
                 </div>
-            </div>
+            </div>-->
         </section>
         <section class="scores">
             <button class="btn-new">
@@ -229,10 +229,10 @@
             </button>
             <div class="scores__player scores__player--active scores__player--0">
                 <div class="scores__player-name" id="name-0">Player 1</div>
-                <div class="scores__player-score" id="score-0">43</div>
+                <div class="scores__player-score" id="score-0">0</div>
                 <div class="scores__player-current-box">
                     <div class="scores__player-current-label">Current</div>
-                    <div class="scores__player-current-score" id="current-0">11</div>
+                    <div class="scores__player-current-score" id="current-0">0</div>
                 </div>
             </div>
             <button class="btn-hold">
@@ -243,10 +243,10 @@
             </button>
             <div class="scores__player scores__player--1">
                 <div class="scores__player-name" id="name-1">Player 2</div>
-                <div class="scores__player-score" id="score-1">13</div>
+                <div class="scores__player-score" id="score-1">0</div>
                 <div class="scores__player-current-box">
                     <div class="scores__player-current-label">Current</div>
-                    <div class="scores__player-current-score" id="current-1">21</div>
+                    <div class="scores__player-current-score" id="current-1">0</div>
                 </div>
             </div>
         </section>
@@ -283,7 +283,7 @@
             </div>
         </section>
         <footer class="footer">
-            <small>&copy; Copyright 2020, Bar Shitrit</small>
+            <small>Scores template design inspired by Jonas Schmedtmann design. Any other part in the app entire &copy; copyright 2020 is by Bar Shitrit</small>
         </footer>
     </div>
 <script src="js/bundle.js"></script></body>
