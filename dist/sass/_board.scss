@@ -55,7 +55,7 @@
     visibility: visible;
     opacity: 1;
     backface-visibility: hidden;
-    transition: visibility 0s, opacity 0.5s, transform 0.5s ease-out;
+    transition: visibility 0s, opacity 0.5s, transform 0.2s ease-out;
     transition-delay: 1s;
 
     justify-self: center;
@@ -144,6 +144,10 @@
     }
 
     &__winner{
-        transform: scale(1.3) translateY(50%);
+        transform: translateY(50%);
+
+        position: relative;
+        height: 100%;
+        width: 100%;
     }
 }

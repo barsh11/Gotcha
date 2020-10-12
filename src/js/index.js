@@ -219,7 +219,7 @@ const controlRound= (currPlayer, currCards) => {
                     let gotchaCard= document.querySelector('.card__gotcha');
                     roundView.flipCardsUI(gotchaCard);
                     scoresView.renderWinner(gotchaCard, winner);
-                }, 1500);
+                }, 2000);
             }
         }
             

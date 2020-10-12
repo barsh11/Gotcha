@@ -17,7 +17,7 @@ export const renderCurrentScore= ( (player, score) => {
 export const renderWinner= (gotchaCard, winner) => {
     gotchaCard.classList.add('card__winner');
     let heading= document.createElement('h2');
-    gotchaCard.insertAdjacentElement('beforebegin', heading);
-    heading.classList.add('h2-heading');
     heading.textContent=`player ${winner} won!`;
+    heading.classList.add('h2-heading');
+    setTimeout(() => {gotchaCard.appendChild(heading);}, 1000);
 }
