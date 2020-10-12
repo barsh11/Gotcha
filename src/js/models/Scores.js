@@ -3,6 +3,11 @@ export default class Scores{
         this.final=[];
     }
     checkWinner(){
-        return (this.final[0] > this.final[1]) ? 0 : 1;
+        if(this.final[0] > this.final[1]){
+            return 0;
+        } else if(this.final[0] < this.final[1]){
+            return 1;
+        }
+        return -1;
     }
 }

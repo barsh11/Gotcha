@@ -10,7 +10,7 @@ const state={};
 
 /** COSTUMIZE CONTROLLER */
 // functionality of costume images is prevented until fixed
-// and it is markes as comments here.
+// and it is marked as comments here.
 elements.costumeCards.addEventListener('click', e => {
     // 1) when this section is clicked:    
     e.preventDefault();
@@ -24,7 +24,7 @@ elements.costumeCards.addEventListener('click', e => {
         // 2.1) generate thumbnails on UI
         if (state.costumize.files){
             costumizeView.renderThumbs(state.costumize.files);
-            */
+            
             // 3) when submit btn is clicked:
             const submitImgs= document.querySelector('.costume__personalize > .btn-submit');
             submitImgs.addEventListener('click', submitImgsE => {
@@ -33,12 +33,12 @@ elements.costumeCards.addEventListener('click', e => {
             // 3.2) auto close the menu on costumize bar.
             costumizeView.dropContent(elements.costumeCards, 1);
             // 4) generate board
-            // const currCards= state.costumize.generateCostumize(state.costumize.images);
+             const currCards= state.costumize.generateCostumize(state.costumize.images);
             // start game
-            // controlGame(0, currCards);
-        //});
+             controlGame(0, currCards);
+        });
              }
-    , false);
+    , false);*/
 });
 
 elements.randomCards.addEventListener('click', e =>{
@@ -54,16 +54,15 @@ elements.randomCards.addEventListener('click', e =>{
     submitNum.addEventListener('click', submitNumE => {
         // 3.1) determine number of photos
         const num=inputNum.value;
-        if(num <8){
+        if(num <8 && num >0){
             // 3.2) auto close the menu on costumize bar.
             costumizeView.dropContent(elements.randomCards, 2);
             // 4) generate board
             const currCards= state.costumize.generateRandom(num);
             // start game
             initGame(undefined, currCards);
-            /*controlGame(0, currCards);*/
         } else{
-            alert('You can choose up to 7 photos. Please choose again.');
+            alert('You can choose 1 - 7 photos. Please try again.');
         }
     });
 });

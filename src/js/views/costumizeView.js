@@ -5,11 +5,6 @@ const changeArrow= (linkNum, arrowState) => {
     arrowState== 'up' ? icon.innerHTML=icon.innerHTML.replace('chevron-small-down', 'chevron-small-up') : icon.innerHTML=icon.innerHTML.replace('chevron-small-up', 'chevron-small-down');
 }
 
-// Handles display when there are images in object:
-/*const determineMarkup= state => {
-
-}*/
-
 export const dropContent= (link, linkNum) => {
     let markup;
     if (!link.classList.contains('dropped')){
@@ -39,7 +34,7 @@ export const dropContent= (link, linkNum) => {
             markup=`
             <div class="costume__random">
                 <label for="numPhotos" class="h3-heading">choose number of photos: </label>
-                <input type="number" name="numPhotos" class="input__field--num" value="7" max="7">
+                <input type="number" name="numPhotos" class="input__field--num" value="7" min="1" max="7">
                 <btn type="submit" class="btn-submit">
                     <svg class="btn-submit__icon">
                         <use xlink:href="img/sprite.svg#icon-arrow-right"></use>
