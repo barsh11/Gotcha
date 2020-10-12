@@ -11,14 +11,26 @@ export default class Round{
     flipCards(card){
         // First card to flip for this round
         if(!this.hasFlippedCard){
-            this.hasFlippedCard= true;
-            this.firstCard= card;
-            console.log(`flipCards: first card is: ${this.firstCard.dataset.cardnum}`);
+            if(card.dataset.cardnum!= 'gotcha'){
+                this.hasFlippedCard= true;
+                this.firstCard= card;
+            } else{
+                this.hasFlippedCard= false;
+                this.firstCard= card;
+                this.lockBoard= true;
+                return;
+            }
         } else{
             this.hasFlippedCard= false;
             this.secondCard= card;
-            console.log(`flipCards: second card is: ${this.secondCard.dataset.cardnum}`);
-            return this.cardsMatch();
+            this.lockBoard= true;
+            console.log(`flipCards: second card is: ${this.secondCard.dataset.cardnum}`); //testing
+            if(card.dataset.cardnum!= 'gotcha'){
+                return this.cardsMatch();
+            } else{
+                console.log(`flipCards: second card is gotcha: ${this.firstCard}`);
+                console.log(this.secondCard);
+            }
         }
     }
     cardsMatch(){
@@ -44,5 +56,21 @@ export default class Round{
         console.log('removeCards: removed firstCard from board');
         console.log('removeCards: removed secondCard from board');
         console.log(`removeCards: the new array is: ${this.currCards}`);
+    }
+    checkLockBoard(){
+        if (this.lockBoard=== true){
+            console.log('checkLockBoard: board is lock. please click again.');
+            return true;
+        }
+
+        return false;
+    }
+    checkSameCard(currId){
+        if (currId===this.firstCard.id){ 
+            console.log('checkSameCard: you chose the same card twice. please click again.');
+            return true;
+        }
+
+        return false;
     }
 }

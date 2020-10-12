@@ -1,6 +1,8 @@
 export default class Scores{
-    constructor(score0, score1){
-        this.score0= score0;
-        this.score1= score1;
+    constructor(final){
+        this.final=[];
+    }
+    checkWinner(){
+        return (this.final[0] > this.final[1]) ? 0 : 1;
     }
 }

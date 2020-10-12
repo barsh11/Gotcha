@@ -8,7 +8,10 @@ export const matchCardsUI= round => {
     round.secondCard.classList.add('card__matched');
 
     // in order to be able to see the transition before dissapearence:
-    setTimeout(organizeBoard, 2000);
+    setTimeout( () => {
+        organizeBoard();
+        round.lockBoard= false;
+    }, 2000);
 }
 
 const organizeBoard= () => {

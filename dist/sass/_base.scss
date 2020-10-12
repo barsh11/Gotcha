@@ -182,7 +182,9 @@ body{
      padding: 0.5rem;
 
      &:hover,
-     &:active{
+     &:active,
+     &:focus{
+         outline: none;
          cursor: pointer;
          transform: translateY(+0.5rem);
      }
@@ -199,6 +201,14 @@ body{
     color: var(--color-black-light);
     font-size: 7rem;
     font-weight: 700;
+}
+
+.h2-heading{
+    text-transform: uppercase;
+    color: var(--color-white);
+    font-size: 5rem;
+    font-weight: 700;
+    display: block;
 }
 
 .h3-heading{

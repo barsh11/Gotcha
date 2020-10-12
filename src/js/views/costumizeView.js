@@ -17,24 +17,24 @@ export const dropContent= (link, linkNum) => {
         if (linkNum===1){
             markup=`
                 <div class="costume__personalize">
-                    <label for="photo" class="h3-heading">choose photos: </label>
-                    <input type="file" name="photo" accept="image/*" multiple class="input__field--browse">
-                    <div class="costume__thumbnails">
-                        <div class="costume__wrapper--1"></div>
-                        <div class="costume__wrapper--2"></div>
-                        <div class="costume__wrapper--3"></div>
-                        <div class="costume__wrapper--4"></div>
-                        <div class="costume__wrapper--5"></div>
-                        <div class="costume__wrapper--6"></div>
-                        <div class="costume__wrapper--7"></div>
-                    </div>
+                    <label for="photo" class="h3-heading">coming soon!</label>
                     <btn type="submit" class="btn-submit">
-                        <svg class="btn-submit__icon">
-                            <use xlink:href="img/sprite.svg#icon-arrow-right"></use>
-                        </svg>
+                    <svg class="btn-submit__icon">
+                        <use xlink:href="img/sprite.svg#icon-arrow-right"></use>
+                     </svg>
                     </btn>
                 </div>
                 `;
+                    // <input type="file" name="photo" accept="image/*" multiple class="input__field--browse">
+                    // div class="costume__thumbnails">
+                    //     <div class="costume__wrapper--1"></div>
+                    //     <div class="costume__wrapper--2"></div>
+                    //     <div class="costume__wrapper--3"></div>
+                    //     <div class="costume__wrapper--4"></div>
+                    //     <div class="costume__wrapper--5"></div>
+                    //     <div class="costume__wrapper--6"></div>
+                    //     <div class="costume__wrapper--7"></div>
+                    // </div>
         } else if (linkNum===2){
             markup=`
             <div class="costume__random">
@@ -68,7 +68,8 @@ export const dropContent= (link, linkNum) => {
     }
 }
 
-export const renderThumbs= files => {
+// TBD
+/*export const renderThumbs= files => {
     for (let i=0; i<files.length; i++){
         const img= document.createElement('img');
         img.src=URL.createObjectURL(files[i]);
@@ -80,4 +81,4 @@ export const renderThumbs= files => {
         const thumb=document.querySelector(`.costume__wrapper--${i+1}`);
         thumb.appendChild(img);
     }
-}
+}*/

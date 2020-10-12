@@ -8,21 +8,39 @@ function generateRandomNum(num){
     return Math.floor(Math.random()*num);
 }
 
-function generateCardsHtml(num){
-    let randomNums= [];
-    let randNum;
-    let i=0;
-    while(randomNums.length!==num*2){
-        randNum=generateRandomNum(num);
-        if(countInArray(randomNums, randNum) < 2){ 
-            randomNums[i]=randNum;
-            i++;
+function shuffle(array){
+    for(let i= array.length - 1; i>0; i--){
+        const j= Math.floor(Math.random()*(i+1));
+        [array[i], array[j]]=[array[j], array[i]];
+    }
+
+    return array;
+}
+
+function generateCardsHtml(num, array){
+    let randomNums;
+    const board=elements.board;
+
+    if(array===undefined){
+        randomNums=[];
+        let randNum;
+        let i=0;
+        while(randomNums.length!==num*2){
+            randNum=generateRandomNum(num);
+            if(countInArray(randomNums, randNum) < 2){ 
+                randomNums[i]=randNum;
+                i++;
+            }
         }
+        
+        randomNums.splice(generateRandomNum(num-1), 0, 8);
+    } else{
+        board.innerHTML='';
+        console.log(`before shuffle: ${array}`); //testing
+        randomNums= shuffle(array);
+        console.log(`after shuffle: ${randomNums}`); //testing
     }
     
-    randomNums.splice(generateRandomNum(num-1), 0, 8);
-    
-    const board=elements.board;
     for(let i=0; i< randomNums.length; i++){
         let markup;
 
@@ -41,7 +59,7 @@ function generateCardsHtml(num){
             `;
         } else{
             markup=`
-                <div class="card card__gotcha" id="${i}" data-cardNum="gotcha">
+                <div class="card card__gotcha" id="${i}" data-cardnum="gotcha">
                     <div class="card__side card__side--front">
                         <div class="card__picture card__picture--front">
                             &nbsp;
@@ -82,8 +100,8 @@ export default class Costumize{
         const currCards= generateCardsHtml(images.length);
         return currCards;
     }
-    generateRandom(num){
-        const currCards= generateCardsHtml(num);
+    generateRandom(num, array){
+        const currCards= generateCardsHtml(num, array);
         return currCards;
     }
 }
