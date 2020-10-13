@@ -1,5 +1,5 @@
 export const flipCardsUI= card => {
-    console.log(`flipCardsUI: card flipped: ${card.dataset.cardnum}`);
+    // testing- console.log(`flipCardsUI: card flipped: ${card.dataset.cardnum}`);
     card.classList.toggle("card__flipped");
 }
 

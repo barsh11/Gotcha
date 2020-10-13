@@ -111,19 +111,19 @@ const passTurn= () => {
     state.scores.final[state.round.currPlayer]= state.scores.final[state.round.currPlayer] + state.round.currScore;
     // show final score in UI
     scoresView.renderFinalScore(state.round.currPlayer, state.scores.final[state.round.currPlayer]);
-    console.log('passTurn: final score updated');
+    // testing- console.log('passTurn: final score updated');
     // init current score
     state.round.currScore= 0;
     // show current score UI
     scoresView.renderCurrentScore(state.round.currPlayer, state.round.currScore);
-    console.log('passTurn: current score updated');
+    // testing- console.log('passTurn: current score updated');
     if(state.round.currCards.length!=1){
         // next player
         let player;
         state.round.currPlayer===0 ? player=1 : player=0;
         // next player in UI
         scoresView.renderActivePlayer(state.round.currPlayer);
-        console.log(`passTurn: turn is passed from: ${state.round.currPlayer} to ${player}`);
+        // testing- console.log(`passTurn: turn is passed from: ${state.round.currPlayer} to ${player}`);
         initRound(player, state.round.currCards);
     }
 }
@@ -135,7 +135,7 @@ const controlRound= (currPlayer, currCards) => {
 
         // start a new round
         state.round= new Round(currPlayer, false, currCards, -1, -1, false, 0);
-        console.log(state.round);
+        // testing- console.log(state.round);
 
         // select all cards
         const cards=document.querySelectorAll('.card');
@@ -151,10 +151,10 @@ const controlRound= (currPlayer, currCards) => {
         const clickHandler= (e) => {
             // choosing closest card to click 
             let card= e.target.closest('.card');
-            console.log(`controlGame: the card that was clicked on is:`);
-            console.log(card.dataset.cardnum);
-            console.log('controlGame: cards are: ');
-            console.log(state.round.currCards);
+            // testing- console.log(`controlGame: the card that was clicked on is:`);
+            // testing- console.log(card.dataset.cardnum);
+            // testing- console.log('controlGame: cards are: ');
+            // testing- console.log(state.round.currCards);
             
             // if the flipping back of the cards that didn't match
             // is not finished:
@@ -169,19 +169,19 @@ const controlRound= (currPlayer, currCards) => {
 
             // if user clicked on GOTCHA
             if (card.dataset.cardnum==='gotcha'){
-                console.log(state.round);
+                // testing- console.log(state.round);
                 let isFirst;
                 (state.round.hasFlippedCard===false) ? isFirst= true : isFirst= false;
-                console.log(isFirst); //testing
+                // testing- console.log(isFirst); //testing
                 // flip the card
                 state.round.flipCards(card);
-                console.log('gotcha is now the first card');
-                console.log(state.round.firstCard);
+                // testing- console.log('gotcha is now the first card');
+                // testing- console.log(state.round.firstCard);
                   
                 setTimeout(() => {
                     // flip card back in UI   
                     if(isFirst=== true){
-                        console.log('gotcha is first');
+                        // testing- console.log('gotcha is first');
                         roundView.flipCardsUI(state.round.firstCard); 
                     } else{
                         roundView.flipCardsUI(state.round.secondCard); 
@@ -191,11 +191,11 @@ const controlRound= (currPlayer, currCards) => {
                     state.round.currScore= 0;
                     
                     // shuffle board
-                    console.log('controlGame: cards before shuffle are: ');
-                    console.log(`${state.round.currCards}`);
+                    // testing- console.log('controlGame: cards before shuffle are: ');
+                    // testing- console.log(`${state.round.currCards}`);
                     state.round.currCards= state.costumize.generateRandom(state.round.currCards.length, state.round.currCards);
-                    console.log('controlGame: cards after shuffle are: ');
-                    console.log(`${state.round.currCards}`);                    
+                    // testing- console.log('controlGame: cards after shuffle are: ');
+                    // testing- console.log(`${state.round.currCards}`);                    
                     // state.round.lockBoard= false;
                     // passes turn
                     passTurn();
@@ -231,8 +231,8 @@ const controlRound= (currPlayer, currCards) => {
             }
             if (currCards.length===1){
                 passTurn();
-                console.log('player 1 score: '+state.scores.final[0]);
-                console.log('player 2 score: '+state.scores.final[1]);
+                // testing- console.log('player 1 score: '+state.scores.final[0]);
+                // testing- console.log('player 2 score: '+state.scores.final[1]);
                 let winner= state.scores.checkWinner() + 1;
                 setTimeout(() => {
                     let gotchaCard= document.querySelector('.card__gotcha');

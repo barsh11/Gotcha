@@ -36,9 +36,9 @@ function generateCardsHtml(num, array){
         randomNums.splice(generateRandomNum(num-1), 0, 8);
     } else{
         board.innerHTML='';
-        console.log(`before shuffle: ${array}`); //testing
+        // testing- console.log(`before shuffle: ${array}`); //testing
         randomNums= shuffle(array);
-        console.log(`after shuffle: ${randomNums}`); //testing
+        // testing- console.log(`after shuffle: ${randomNums}`); //testing
     }
     
     for(let i=0; i< randomNums.length; i++){
