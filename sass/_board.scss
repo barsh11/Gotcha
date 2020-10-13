@@ -46,7 +46,7 @@
     }
 
     @media only screen and (max-width: $bp-small){
-        grid-template-rows: repeat(auto-fit, [card-col-start] 23vw [card-col-end]);
+        grid-template-rows: repeat(auto-fit, [card-col-start] 25vw [card-col-end]);
         grid-template-columns: repeat(auto-fit, [card-col-start] 18vw [card-col-end]);
     }
 }
