@@ -30,7 +30,7 @@
 }
 
 $bp-largest: 93.75em; //1500px
-$bp-large: 68.75em; //1100px
+$bp-large: 75em; //1200px
 $bp-medium: 56.25em; //900px
 $bp-small:  37.5em; //600px
 
@@ -65,9 +65,11 @@ body{
      color: var(--color-black);
      font-weight: 300;
      line-height: 1.6;
-     background-image: linear-gradient(to bottom left, #ed3d57, #660917); //fix this colors
+     background-image: linear-gradient(to bottom left, #ed3d57, #660917); 
+     //background-repeat: no-repeat;
+     background-size: cover;
 
-     padding: 8rem;
+     padding: 10rem 8rem;
 
      @media only screen and (max-width: $bp-large){
         padding: 0;
@@ -83,7 +85,7 @@ body{
     min-width: 80vw;
 
     display: grid;
-    grid-template-rows: 12rem 2fr 1fr 5rem;
+    grid-template-rows: 12rem min-content min-content 5rem;
     grid-template-columns: [costume-start] minmax(20rem, 1.5fr) [costume-end board-start] 4fr [board-end scores-start] minmax(20rem, 1.5fr) [scores-end];
 
     @media only screen and (max-width: $bp-medium){
