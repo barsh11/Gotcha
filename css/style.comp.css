@@ -133,8 +133,9 @@ body {
   font-family: inherit;
   font-size: 2.5rem;
   color: var(--color-black-light);
+  backface-visibility: hidden;
   transition: all 0.2s;
-  display: inline-block;
+  display: block;
   padding: 0.5rem;
   display: flex;
   align-items: center;
@@ -146,6 +147,12 @@ body {
     outline: none;
     cursor: pointer;
     transform: translateY(0.5rem); }
+
+@media only screen and (max-width: 37.5em) {
+  .btn-new:hover,
+  .btn-new:active,
+  .btn-new:focus {
+    transform: translateY(0); } }
 
 .logo {
   height: 9rem;
@@ -272,7 +279,7 @@ body {
   backface-visibility: hidden;
   transition: all 0.3s;
   display: grid;
-  grid-template-rows: repeat(4, [card-col-start] 15vw [card-col-end]);
+  grid-template-rows: repeat(4, [card-col-start] min-max(15vw, 15vw) [card-col-end]);
   grid-template-columns: repeat(auto-fit, [card-col-start] 10vw [card-col-end]);
   grid-gap: 1.5rem;
   justify-content: center;

@@ -178,9 +178,10 @@ body{
      font-family: inherit;
      font-size: 2.5rem;
      color: var(--color-black-light);
+     backface-visibility: hidden;
      transition: all 0.2s;
      
-     display: inline-block;
+     display: block;
      padding: 0.5rem;
 
      display: flex;
@@ -194,6 +195,14 @@ body{
          cursor: pointer;
          transform: translateY(+0.5rem);
      }
+ }
+
+ .btn-new:hover,
+ .btn-new:active,
+ .btn-new:focus{
+    @media only screen and (max-width: $bp-small){
+        transform: translateY(0);
+    }
  }
 
 .logo{
