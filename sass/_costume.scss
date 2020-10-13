@@ -49,8 +49,8 @@
         fill: var(--color-white);
 
         @media only screen and (max-width: $bp-medium){
-            height: 3rem;
-            width: 3rem;
+            height: 2.5rem;
+            width: 2.5rem;
         }
     }
 
@@ -102,7 +102,7 @@
     padding: 0.8rem 0;
     border: none;
     border-radius: 0;
-    border-bottom: 0.2rem solid var(--color-white);
+    border-bottom: 0.1rem solid var(--color-white);
     appearance: textfield;
     transition: all 0.2s;
 

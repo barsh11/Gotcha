@@ -135,7 +135,10 @@ body {
   color: var(--color-black-light);
   transition: all 0.2s;
   display: inline-block;
-  padding: 0.5rem; }
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
   .btn-new:hover, .btn-new:active, .btn-new:focus,
   .btn-hold:hover,
   .btn-hold:active,
@@ -216,8 +219,8 @@ body {
     fill: var(--color-white); }
     @media only screen and (max-width: 56.25em) {
       .costume__dropIcon {
-        height: 3rem;
-        width: 3rem; } }
+        height: 2.5rem;
+        width: 2.5rem; } }
   .costume__personalize, .costume__random {
     background-color: var(--color-primary-dark-2);
     padding: 2rem 3rem;
@@ -249,7 +252,7 @@ body {
   padding: 0.8rem 0;
   border: none;
   border-radius: 0;
-  border-bottom: 0.2rem solid var(--color-white);
+  border-bottom: 0.1rem solid var(--color-white);
   appearance: textfield;
   transition: all 0.2s; }
   .input__field--num:focus {
