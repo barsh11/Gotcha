@@ -8,6 +8,16 @@ import {elements} from './views/base';
 
 const state={};
 
+let gamePlaying= false;
+
+const checkDropped= innerContent => {
+    if (innerContent=== null){
+        return false;
+    }
+
+    return true;
+}
+
 /** COSTUMIZE CONTROLLER */
 // functionality of costume images is prevented until fixed
 // and it is marked as comments here.
@@ -42,29 +52,39 @@ elements.costumeCards.addEventListener('click', e => {
 });
 
 elements.randomCards.addEventListener('click', e =>{
+    let isDropped;
     // 1) when this section is clicked:
     e.preventDefault();
     // 1.1) render HTML on UI
     costumizeView.dropContent(elements.randomCards, 2);
     // 2) recieve number op photos from user
     const inputNum= document.querySelector('.input__field--num');
+    // *) check is the menu is dropped
+    isDropped= checkDropped(inputNum);
     // 3) when submit btn is clicked:
     const submitNum= document.querySelector('.costume__random > .btn-submit');
     state.costumize= new Costumize();
-    submitNum.addEventListener('click', submitNumE => {
-        // 3.1) determine number of photos
-        const num=inputNum.value;
-        if(num <8 && num >0){
-            // 3.2) auto close the menu on costumize bar.
-            costumizeView.dropContent(elements.randomCards, 2);
-            // 4) generate board
-            const currCards= state.costumize.generateRandom(num);
-            // start game
-            initGame(undefined, currCards);
-        } else{
-            alert('You can choose 1 - 7 photos. Please try again.');
-        }
-    });
+    if (isDropped=== true){
+        submitNum.addEventListener('click', submitNumE => {
+            // 3.1) determine number of photos
+            const num=inputNum.value;
+            if(gamePlaying=== false){
+                if(num <8 && num >0){
+                    // 3.2) auto close the menu on costumize bar.
+                    costumizeView.dropContent(elements.randomCards, 2);
+                    // 4) generate board
+                    const currCards= state.costumize.generateRandom(num);
+                    // 5) start game
+                    gamePlaying= true;
+                    initGame(undefined, currCards);
+                } else{
+                    alert('You can choose 1 - 7 photos. Please try again.');
+                }
+            } else{
+                alert('The game is already playing. If you want to start a new game, click on \'NEW GAME\'');
+            }
+        });
+    }
 });
 
 /** GAME CONTROLLER */
